@@ -1,0 +1,16 @@
+<h1>Line</h1>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <%= link_to "Bus Schedule Home", lines_path, :class => "navbar-brand" %>
+  <button class="new navbar-btn">New</button>
+</nav>
+
+<ul>
+  <% @lines.each do |line| %>
+    <li><%= link_to line.name, line_path(line) %></li>
+  <% end %>
+</ul>
+<hr>
+<div class="hidden_form">
+  <%= render 'form' %>
+</div>
