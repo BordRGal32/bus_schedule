@@ -9,8 +9,25 @@ class StationsController < ApplicationController
       redirect_to "/"
     else
       @stations = Station.all
-      render('stations/index.html.erb')
+      index
     end
+  end
+  def show
+    @station = Station.find(params[:id])
+  end
+  def update
+    @station = Station.find(params[:id])
+    if @station.update(station_params)
+      redirect_to station_path
+    else
+      show
+    end
+  end
+  def destroy
+    @station = Station.find(params[:id])
+    @station.destroy
+    @stations = Station.all
+    redirect_to('/')
   end
 
 private
