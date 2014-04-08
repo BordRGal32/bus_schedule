@@ -1,8 +1,13 @@
 <h1>Line</h1>
+<hr>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <%= link_to "Bus Schedule Home", lines_path, :class => "navbar-brand" %>
-  <button class="new navbar-btn">New</button>
+  <%= link_to "lines", lines_path, :class => "navbar-text" %>
+  <%= link_to "stations", stations_path, :class => "navbar-text" %>
+  <div class="btn-group-xs">
+    <button class="new btn btn-default navbar-btn">New</button>
+  </div>
 </nav>
 
 <ul>

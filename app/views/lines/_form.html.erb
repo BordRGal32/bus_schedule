@@ -4,5 +4,19 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+  <div class = "form-group">
+    <%= f.label :Add_stop_to_line %>
+  <% (Station.all-@line.stations).sort_by{|i| i.name}.each do |station| %>
+    <label class="checkbox-inline">
+      <input type="checkbox" name="station_ids[]" value="<%= station.id %>" ><%= station.name %></input></label>
+  <% end %>
+  <br>
+  <%= f.label :Delete_stop_from_line %>
+  <% @line.stations.sort_by{|i| i.name}.each do |station| %>
+    <label class="checkbox-inline">
+      <input type="checkbox" name="station_delete_ids[]" value="<%= station.id %>"><%= station.name %></input></label>
+  <% end %>
+  <br>
   <%= f.submit(:class => "btn btn-primary") %>
 <% end %>
+

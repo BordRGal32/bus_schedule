@@ -2,14 +2,21 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <%= link_to "Bus Schedule Home", stations_path, :class => "navbar-brand" %>
   <p class="pull-right navbar-text"> <%= @station.name %> </p>
-  <button class="new navbar-btn">Edit</button>
-  <button><%= link_to "Delete", station_path(@station), :class => "navbar-btn" ,
-                                                        :confirm => "Are you sure?",
-                                                        :method => "delete"%></button>
+  <div class="btn-group-xs">
+    <button type="button" class="new btn btn-default navbar-btn">Edit</button>
+    <button type="button" class="btn btn-default navbar-btn">
+      <%= link_to "Delete", station_path(@station), :class => "" ,
+                                                    :confirm => "Are you sure?",
+                                                    :method => "delete"%></button>
+  </div>
 </nav>
 <hr>
-<p>LINES GO HERE</p>
-
+<p>Lines</p>
+<ul>
+  <% @station.lines.sort_by{|l|l.name}.each do |line| %>
+    <li><%= line.name %></li>
+  <%end%>
+</ul>
 
 
 <hr>
